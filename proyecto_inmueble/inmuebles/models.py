@@ -20,6 +20,13 @@ class Usuario(models.Model):
     )
     tipo_usuario = models.CharField(max_length=20, choices = tipo_usuario_choices, null=False, blank=False,)
 
+class Region(models.Model):
+    nombre = models.CharField(max_length=100)
+
+class Comuna(models.Model):
+    nombre = models.CharField(max_length=100)
+    region = models.ForeignKey(Region, on_delete=models.CASCADE)
+
 class Inmueble(models.Model):
     nombre = models.CharField(max_length=200, null=False, blank=False,)
     descripcion = models.TextField()
@@ -44,7 +51,7 @@ class Inmueble(models.Model):
         ]
     )
     direccion = models.CharField(max_length=200, null=False, blank=False)
-    comuna = models.CharField(max_length=100)
+    comuna = models.ForeignKey(Comuna, on_delete=models.CASCADE)
     tipo_inmueble_choices = (
         ('casa', 'Casa'),
         ('departamento','Departamento'),

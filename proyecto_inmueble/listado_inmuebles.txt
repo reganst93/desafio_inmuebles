@@ -1,0 +1,37 @@
+Región: Los Lagos
+
+Región: Los Ríos
+
+Región: Arica y Parinacota
+Inmueble: Casa acogedora
+Inmueble: Departamento frente al mar
+Inmueble: Parcela campestre
+Inmueble: Casa familiar
+
+Región: Aisén del Gral. Carlos Ibáñez del Campo
+
+Región: Antofagasta
+
+Región: Valparaiso
+
+Región: BioBio
+
+Región: Metropolitana
+
+Región: Araucanía
+
+Región: Libertador Gral. Bernardo O’Higgins
+
+Región: Tarapaca
+Inmueble: Departamento moderno
+
+Región: Ñuble
+
+Región: Coquimbo
+
+Región: Magallanes y de la Antártica Chilena
+
+Región: Maule
+
+Región: Atacama
+

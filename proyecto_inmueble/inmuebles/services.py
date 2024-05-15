@@ -1,8 +1,8 @@
-from .models import Inmueble, Usuario
+from .models import Inmueble, Usuario, Comuna, Region
 from django.core.exceptions import ObjectDoesNotExist
 
 def crear_usuario(nombre, apellido, rut, direccion, telefono,correo, tipo_usuario):
-     """ 
+    """ 
     Crea un nuevo usuario en la base de datos.
 
     Args: 
@@ -89,3 +89,65 @@ def eliminar_usuario(rut):
         return True
     except ObjectDoesNotExist:
         return False
+
+def consultar_inmuebles_comuna(nombre_documento):
+    """
+    Consulta y guarda en un archivo de texto el listado de inmuebles para arriendo
+    separado por comunas, utilizando solo los campos "nombre" y "descripción".
+
+    Args:
+        nombre_documento (str): El nombre del archivo de texto donde se guardarán los resultados.
+
+    Returns:
+        bool: True si se completó la operación correctamente, False si ocurrió un error.
+    """
+    try:
+        #abrir el archivo en modo escritura
+        with open(nombre_documento, 'w') as archivo:
+            #recorrer todos los inmuebles en la base de datos
+            for inmueble in Inmueble.objects.all():
+                #Escribir el nombre y la descripcion del inmueble
+                archivo.write(f"Nombre:{inmueble.nombre}\n")
+                archivo.write(f"Descripción:{inmueble.descripcion}\n")
+        return True
+    except Exception as e:
+        print(f"Error al consultar y guardar inmuebles: {e}")
+        return False
+
+
+def consultar_inmuebles_regiones(inmuebles_regiones):
+    """
+    Consulta y guarda en un archivo de texto el listado de inmuebles para arriendo
+    separado por regiones
+
+    Args:
+        inmuebles_regiones (str): El nombre del archivo de texto donde se guardarán los resultados.
+
+    Returns:
+        bool: True si se completó la operación correctamente, False si ocurrió un error.
+    """
+    try:
+        with open(inmuebles_regiones, 'w') as archivo:
+            # Obtener todas las regiones disponibles en la base de datos
+            regiones = set(Comuna.objects.values_list('region__nombre', flat=True))
+            for region in regiones:
+                archivo.write(f'Región: {region}\n')
+                
+                # Consultar las comunas de la región actual
+                comunas_region = Comuna.objects.filter(region__nombre=region)
+                
+                # Consultar los inmuebles disponibles para cada comuna de la región actual
+                for comuna in comunas_region:
+                    inmuebles_comuna = Inmueble.objects.filter(comuna=comuna)
+                    for inmueble in inmuebles_comuna:
+                        archivo.write(f'Inmueble: {inmueble.nombre}\n')
+                
+                # Separador entre regiones
+                archivo.write('\n')
+        return True
+    except Exception as e:
+        print(f"Error al consultar y guardar inmuebles por región: {e}")
+        return False
+
+
+                

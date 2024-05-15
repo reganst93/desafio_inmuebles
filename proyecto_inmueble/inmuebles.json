@@ -1,0 +1,82 @@
+[
+    {
+        "model": "inmuebles.inmueble",
+        "fields": {
+            "nombre": "Casa acogedora",
+            "descripcion": "Casa amplia y luminosa en el centro de Santiago.",
+            "m2_construidos": 150,
+            "m2_totales": 200,
+            "cantidad_estacionamentos": 2,
+            "cantidad_habitaciones": 3,
+            "cantidad_banos": 2,
+            "direccion": "Av. Providencia 123",
+            "comuna": 1,
+            "tipo_inmueble": "casa",
+            "precio_arriendo_mensual": 500000
+        }
+    },
+    {
+        "model": "inmuebles.inmueble",
+        "fields": {
+            "nombre": "Departamento frente al mar",
+            "descripcion": "Moderno departamento con vista al mar en Viña del Mar.",
+            "m2_construidos": 80,
+            "m2_totales": 100,
+            "cantidad_estacionamentos": 1,
+            "cantidad_habitaciones": 2,
+            "cantidad_banos": 1,
+            "direccion": "Av. Marina 456",
+            "comuna": 2,
+            "tipo_inmueble": "departamento",
+            "precio_arriendo_mensual": 700000
+        }
+    },
+    {
+        "model": "inmuebles.inmueble",
+        "fields": {
+            "nombre": "Parcela campestre",
+            "descripcion": "Parcela tranquila y espaciosa para disfrutar de la naturaleza.",
+            "m2_construidos": 300,
+            "m2_totales": 5000,
+            "cantidad_estacionamentos": 5,
+            "cantidad_habitaciones": 4,
+            "cantidad_banos": 3,
+            "direccion": "Camino a Tiltil, Km 10",
+            "comuna": 3,
+            "tipo_inmueble": "parcela",
+            "precio_arriendo_mensual": 800000
+        }
+    },
+    {
+        "model": "inmuebles.inmueble",
+        "fields": {
+            "nombre": "Casa familiar",
+            "descripcion": "Amplia casa con patio en Concepción.",
+            "m2_construidos": 200,
+            "m2_totales": 250,
+            "cantidad_estacionamentos": 3,
+            "cantidad_habitaciones": 4,
+            "cantidad_banos": 2,
+            "direccion": "Calle Los Laureles 789",
+            "comuna": 4,
+            "tipo_inmueble": "casa",
+            "precio_arriendo_mensual": 600000
+        }
+    },
+    {
+        "model": "inmuebles.inmueble",
+        "fields": {
+            "nombre": "Departamento moderno",
+            "descripcion": "Elegante departamento en Las Condes con todas las comodidades.",
+            "m2_construidos": 120,
+            "m2_totales": 150,
+            "cantidad_estacionamentos": 2,
+            "cantidad_habitaciones": 3,
+            "cantidad_banos": 2,
+            "direccion": "Av. Apoquindo 2000",
+            "comuna": 5,
+            "tipo_inmueble": "departamento",
+            "precio_arriendo_mensual": 900000
+        }
+    }    
+]

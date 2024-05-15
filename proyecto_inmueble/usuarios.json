@@ -1,0 +1,67 @@
+[
+    {
+        "model": "inmuebles.usuario",
+        "pk": 1,
+        "fields": {
+            "nombre": "Juan",
+            "apellido": "Pérez",
+            "rut": "1345678-9",
+            "direccion": "Calle Los Robles 123",
+            "telefono": 987654321,
+            "correo": "juanperez@example.com",
+            "tipo_usuario": "arrendador"
+        }
+    },
+    {
+        "model": "inmuebles.usuario",
+        "pk": 2,
+        "fields": {
+            "nombre": "María",
+            "apellido": "González",
+            "rut": "9765432-1",
+            "direccion": "Av. Libertad 456",
+            "telefono": 123456789,
+            "correo": "mariagonzalez@example.com",
+            "tipo_usuario": "arrendatario"
+        }
+    },
+    {
+        "model": "inmuebles.usuario",
+        "pk": 3,
+        "fields": {
+            "nombre": "Pedro",
+            "apellido": "Sánchez",
+            "rut": "2456789-0",
+            "direccion": "Calle Las Flores 789",
+            "telefono": 987123456,
+            "correo": "pedrosanchez@example.com",
+            "tipo_usuario": "arrendador"
+        }
+    },
+    {
+        "model": "inmuebles.usuario",
+        "pk": 4,
+        "fields": {
+            "nombre": "Ana",
+            "apellido": "Martínez",
+            "rut": "8654321-0",
+            "direccion": "Av. Central 321",
+            "telefono": 456789123,
+            "correo": "anamartinez@example.com",
+            "tipo_usuario": "arrendatario"
+        }
+    },
+    {
+        "model": "inmuebles.usuario",
+        "pk": 5,
+        "fields": {
+            "nombre": "Jorge",
+            "apellido": "López",
+            "rut": "7643210-1",
+            "direccion": "Calle San Antonio 987",
+            "telefono": 321654987,
+            "correo": "jorgelopez@example.com",
+            "tipo_usuario": "arrendatario"
+        }
+    }           
+]
