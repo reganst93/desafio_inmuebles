@@ -1,12 +1,37 @@
 from django.db import models
 from django.core.validators import MaxValueValidator, MinValueValidator
+from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin, Group
+
+
 
 
 # Create your models here.
-class Usuario(models.Model):
+class UsuarioManager(BaseUserManager):
+    def create_user(self, rut, password=None, **extra_fields):
+        if not rut:
+            raise ValueError('El campo RUT es obligatorio')
+        user = self.model(rut=rut, **extra_fields)
+        user.set_password(password)
+        user.save(using=self._db)
+
+        if user.tipo_usuario == 'arrendador':
+            group = Group.objects.get(name='Arrendador')
+        else:
+            group = Group.objects.get(name='Arrendatario')
+        user.groups.add(group)
+
+        return user
+
+    def create_superuser(self, rut, password=None, **extra_fields):
+        extra_fields.setdefault('is_staff', True)
+        extra_fields.setdefault('is_superuser', True)
+        return self.create_user(rut, password, **extra_fields)
+
+
+class Usuario(AbstractBaseUser, PermissionsMixin):
     nombre = models.CharField(max_length=50, null=False, blank=False)
     apellido = models.CharField(max_length=50, null=False, blank=False)
-    rut = models.CharField(max_length=9, unique=True,null=False, blank=False)
+    rut = models.CharField(max_length=10, unique=True,null=False, blank=False)
     direccion = models.CharField(max_length=200, null=False, blank=False)
     telefono = models.IntegerField(null=False, blank=False,
         validators=[
@@ -19,6 +44,17 @@ class Usuario(models.Model):
         ('arrendador', 'Arrendador'),
     )
     tipo_usuario = models.CharField(max_length=20, choices = tipo_usuario_choices, null=False, blank=False,)
+    is_active = models.BooleanField(default=True)
+    is_staff = models.BooleanField(default=False)
+
+    password = models.CharField(max_length=128, default='default_password_value')
+    objects = UsuarioManager()
+
+    USERNAME_FIELD = 'rut'
+    REQUIRED_FIELDS = ['nombre', 'apellido', 'correo', 'direccion', 'telefono', 'tipo_usuario']
+
+    def __str__(self):
+        return self.rut
 
 class Region(models.Model):
     nombre = models.CharField(max_length=100)
