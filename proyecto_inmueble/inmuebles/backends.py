@@ -1,5 +1,5 @@
 from django.contrib.auth.backends import BaseBackend
-from .models import Usuario
+from django.contrib.auth import get_user_model
 
 class UsuarioBackend(BaseBackend):
     def authenticate(self, request, rut=None, password=None):
@@ -15,11 +15,14 @@ class UsuarioBackend(BaseBackend):
             Usuario: El usuario autenticado si las credenciales son correctas.
             None: Si las credenciales son incorrectas o el usuario no existe.
         """
+        User = get_user_model()
         try:
-            user = Usuario.objects.get(rut=rut)
+            user = User.objects.get(rut=rut)
             if user.check_password(password):
+                # Set the backend attribute on the user
+                user.backend = f'{user._meta.app_label}.{user._meta.model_name}'
                 return user
-        except Usuario.DoesNotExist:
+        except User.DoesNotExist:
             return None
 
     def get_user(self, user_id):
@@ -33,7 +36,8 @@ class UsuarioBackend(BaseBackend):
             Usuario: El usuario con el ID dado.
             None: Si el usuario no existe.
         """
+        User = get_user_model()
         try:
-            return Usuario.objects.get(pk=user_id)
-        except Usuario.DoesNotExist:
+            return User.objects.get(pk=user_id)
+        except User.DoesNotExist:
             return None
