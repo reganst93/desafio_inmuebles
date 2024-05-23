@@ -27,9 +27,6 @@
               <li class="nav-item">
                 <a class="nav-link" href="#">arriendos</a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link disabled" href="#">algo</a>
-              </li>
               {% if user.is_authenticated %}
                 <li class="nav-item nav-link text-light">Usuario: {{ user.get_username }}</li>
                 <li class="nav-item">
@@ -47,35 +44,34 @@
           </div>
         </nav>
 {% endblock%}
-{% block header%}
-<div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-light">
-    <div class="col-md-5 p-lg-5 mx-auto my-5">
-      <h1 class="display-4 font-weight-normal">Punny headline</h1>
-      <p class="lead font-weight-normal">And an even wittier subheading to boot. Jumpstart your marketing efforts with this example based on Apple's marketing pages.</p>
-      <a class="btn btn-outline-secondary" href="#">Coming soon</a>
+{% block header %}
+    <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-custom">
+        <div class="col-md-5 p-lg-5 mx-auto my-5 content">
+            <h1 class="display-4 font-weight-normal">Portal Inmueblito</h1>
+            <p class="lead font-weight-normal">El sitio ideal para publicar tus propiedades o encontrar inmuebles en alquiler</p>
+            <a class="btn btn-outline-secondary" href="#">Coming soon</a>
+        </div>
+        <div class="product-device box-shadow d-none d-md-block"></div>
+        <div class="product-device product-device-2 box-shadow d-none d-md-block"></div>
     </div>
-    <div class="product-device box-shadow d-none d-md-block"></div>
-    <div class="product-device product-device-2 box-shadow d-none d-md-block"></div>
-  </div>
-
 {% endblock %}
 {%block descriptions%}
 <div class="container">
     <!-- Example row of columns -->
     <div class="row">
       <div class="col-md-4">
-        <h2>Heading</h2>
-        <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+        <h2>Cómo Arrendar tu Propiedad</h2>
+        <p>Aprende los pasos esenciales para arrendar tu propiedad de manera efectiva. Desde la preparación del inmueble hasta la firma del contrato, te guiamos en cada etapa para garantizar un proceso de arriendo sin complicaciones </p>
+        <p><a class="btn btn-secondary" href="#" role="button">Más detalles &raquo;</a></p>
+      </div>
+      <div class="col-md-4">
+        <h2>Consejos para Inquilinos</h2>
+        <p>Encuentra los mejores consejos para inquilinos que buscan un nuevo hogar. Descubre cómo evaluar propiedades, negociar contratos de arrendamiento y mantener una buena relación con el propietario</p>
         <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
       </div>
       <div class="col-md-4">
-        <h2>Heading</h2>
-        <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-        <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
-      </div>
-      <div class="col-md-4">
-        <h2>Heading</h2>
-        <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+        <h2>Beneficios de Ser Dueño de un Inmueble</h2>
+        <p>Explora las ventajas de ser propietario de un inmueble. Desde la generación de ingresos pasivos hasta el aumento del valor del patrimonio, descubre por qué invertir en bienes raíces puede ser una excelente decisión financiera.</p>
         <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
       </div>
     </div>

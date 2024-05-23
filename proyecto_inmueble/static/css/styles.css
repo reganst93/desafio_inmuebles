@@ -1,0 +1,24 @@
+.bg-custom {
+    background-image: url('https://source.unsplash.com/fOxhlF8SCt4');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+    color: white; /* Ensure text is readable against the background */
+}
+
+.bg-custom::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.5); /* Optional: Adjust opacity for overlay effect */
+    z-index: 1;
+}
+
+.bg-custom > .content {
+    position: relative;
+    z-index: 2;
+}
