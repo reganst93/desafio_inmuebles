@@ -1,5 +1,5 @@
 from django import forms
-from .models import Usuario
+from .models import Usuario, Inmueble, Comuna
 
 class UsuarioCreationForm(forms.ModelForm):
     """
@@ -59,3 +59,17 @@ class UsuarioUpdateForm(forms.ModelForm):
     class Meta:
         model = Usuario
         fields = ['nombre', 'apellido', 'rut', 'direccion', 'telefono', 'correo', 'tipo_usuario']
+
+class InmuebleForm(forms.ModelForm):
+    class Meta:
+        model = Inmueble
+        fields = ['nombre', 'descripcion', 'm2_construidos', 'm2_totales', 'cantidad_estacionamentos', 'cantidad_habitaciones', 'cantidad_banos', 'direccion', 'comuna', 'tipo_inmueble', 'precio_arriendo_mensual']
+
+    def __init__(self, *args, **kwargs):
+        super(InmuebleForm, self).__init__(*args, **kwargs)
+        self.fields['comuna'].queryset = Comuna.objects.all().order_by('nombre')
+        
+class InmuebleUpdateForm(forms.ModelForm):
+    class Meta:
+        model = Inmueble
+        fields = ['m2_construidos', 'cantidad_estacionamentos', 'cantidad_banos', 'precio_arriendo_mensual']

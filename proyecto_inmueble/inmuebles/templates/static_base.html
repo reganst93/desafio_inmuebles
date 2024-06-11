@@ -13,37 +13,46 @@
     {% endblock %}
 </head>
 <body>
-    {% block navbar %}
-        <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-          <a class="navbar-brand" href="#">Inmueblitos</a>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarCollapse">
-            <ul class="navbar-nav mr-auto">
-              <li class="nav-item">
-                <a class="nav-link" href="{% url 'home'%}?next={{request.path}}">Home</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">arriendos</a>
-              </li>
-              {% if user.is_authenticated %}
-                <li class="nav-item nav-link text-light">Usuario: {{ user.get_username }}</li>
-                <li class="nav-item">
-                  <a class="nav-link text-light" href="{% url 'profile'%}?next={{request.path}}">Perfil</a></li>
-                <li class="nav-item">
-                  <a class="nav-link text-light" href="{% url 'logout'%}?next={{request.path}}">Cerrar sesión</a></li>
-                {% else %}
-                <li class="nav-item">
-                  <a class="nav-link text-light" href="{% url 'login'%}?next={{request.path}}">Iniciar sesión</a></li>
-                <li class="nav-item">
-                  <a class="nav-link text-light" href="{% url 'register' %}">Registrate</a>
-                </li>
-                {% endif %}
-            </ul>
-          </div>
-        </nav>
-{% endblock%}
+  {% block navbar %}
+  <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+    <a class="navbar-brand" href="#">Inmueblitos</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'home'%}?next={{request.path}}">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'lista_inmuebles'%}?next={{request.path}}">Arriendos</a>
+        </li>
+        {% if user.is_authenticated %}
+          <li class="nav-item nav-link text-light">Usuario: {{ user.get_username }}</li>
+          <li class="nav-item">
+            <a class="nav-link text-light" href="{% url 'profile'%}?next={{request.path}}">Perfil</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-light" href="{% url 'logout'%}?next={{request.path}}">Cerrar sesión</a>
+          </li>
+          {% if user.tipo_usuario == "arrendador" %}
+          <li class="nav-item">
+            <a class="nav-link text-light" href="{% url 'agregar_inmueble' %}">Agregar Inmueble</a>
+          </li>
+        {% endif %}
+        {% else %}
+          <li class="nav-item">
+            <a class="nav-link text-light" href="{% url 'login'%}?next={{request.path}}">Iniciar sesión</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-light" href="{% url 'register' %}">Registrate</a>
+          </li>
+        {% endif %}
+      </ul>
+    </div>
+  </nav>
+{% endblock %}
+
 {% block header %}
     <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-custom">
         <div class="col-md-5 p-lg-5 mx-auto my-5 content">

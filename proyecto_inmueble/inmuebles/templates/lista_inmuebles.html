@@ -1,0 +1,38 @@
+{% extends 'static_base.html' %}
+{% load static %}
+
+
+{% block content %}
+<div class="container">
+    <div class="row">
+      {% for inmueble in inmuebles %}
+      <div class="col-md-4 mb-4">
+          <div class="card" style="width: 18rem;">
+              <img src="{% static 'img/inmu.jpeg' %}" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">{{ inmueble.nombre }}</h5>
+            <p class="card-text">{{ inmueble.descripcion }}</p>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item"><strong>Comuna:</strong> {{ inmueble.comuna }}</li>
+              <li class="list-group-item"><strong>Metros Cuadrados:</strong> {{ inmueble.m2_construidos }} m²</li>
+              <li class="list-group-item"><strong>Cantidad de Habitaciones</strong> {{ inmueble.cantidad_habitaciones }}</li>
+              <li class="list-group-item"><strong>Cantidad de Baños:</strong> {{ inmueble.cantidad_banos }}</li>
+              <li class="list-group-item"><strong>Tipo de inmueble</strong> {{ inmueble.tipo_inmueble }}</li>
+              {% if user.is_authenticated %}
+                {% if user.tipo_usuario == "arrendador" %}
+                    <div class="mt-2">
+                    <a href="{% url 'editar_inmueble' inmueble.id %}" class="btn btn-warning">Editar</a>
+                    <a href="{% url 'borrar_inmueble' inmueble.id %}" class="btn btn-danger">Eliminar</a>
+                    </div>
+                {% elif user.tipo_usuario == "arrendatario" %}
+                    <li class="list-group-item"><strong>Precio de Arriendo:</strong> {{ inmueble.precio_arriendo_mensual }}</li>
+                {% endif %}
+                {% endif %}
+            </ul>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+{% endblock %}

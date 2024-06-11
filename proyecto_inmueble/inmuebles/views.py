@@ -1,8 +1,8 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
-from .forms import UsuarioCreationForm, UsuarioLoginForm, UsuarioUpdateForm
-from .models import Usuario
+from .forms import UsuarioCreationForm, UsuarioLoginForm, UsuarioUpdateForm, InmuebleForm, InmuebleUpdateForm
+from .models import Usuario, Inmueble
 
 def home(request):
     """
@@ -47,6 +47,8 @@ def register(request):
         if form.is_valid():
             form.save()
             return redirect('login')
+        else:
+            print(form.errors)
     else:
         form = UsuarioCreationForm()
     return render(request, 'register.html', {'form': form})
@@ -62,23 +64,59 @@ def profile(request):
     Si la solicitud no es POST, se muestra el formulario de modificación de datos con los datos actuales del usuario.
     """
     if request.method == 'POST':
-        # Si la solicitud es POST, se crea una instancia del formulario
-        # con los datos proporcionados por el usuario y la instancia
-        # actual del usuario.
         form = UsuarioUpdateForm(request.POST, instance=request.user)
         if form.is_valid():
-            # Si el formulario es válido, se guardan los cambios
-            # y se redirige a la página de perfil actualizada.
             form.save()
             return redirect('profile')
     else:
-        # Si la solicitud no es POST, se crea una instancia del formulario
-        # con los datos actuales del usuario.
         form = UsuarioUpdateForm(instance=request.user)
-    # Se renderiza la página de perfil con el formulario.
     return render(request, 'profile.html', {'form': form})
 
 
 def logout_view(request):
     logout(request)
     return redirect('home')
+
+def agregar_inmueble(request):
+    if request.method == 'POST':
+        form = InmuebleForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('home')  
+    else:
+        form = InmuebleForm()
+    return render(request, 'agregar_inmueble.html', {'form': form})
+
+def editar_inmueble(request, inmueble_id):
+    inmueble = get_object_or_404(Inmueble, pk=inmueble_id)
+    if request.method == 'POST':
+        form = InmuebleUpdateForm(request.POST, instance=inmueble)
+        if form.is_valid():
+            form.save()
+            return redirect('lista_inmuebles')
+        else:
+            print(form.errors)  
+    else:
+        form = InmuebleUpdateForm(instance=inmueble)
+    return render(request, 'editar_inmueble.html', {'form': form})
+
+
+def borrar_inmueble(request, inmueble_id):
+    """
+    Vista para borrar un inmueble existente.
+    """
+    inmueble = get_object_or_404(Inmueble, id=inmueble_id)
+    
+    if request.method == 'POST':
+        if 'confirmar' in request.POST:
+            inmueble.delete()
+            # Redirigir a la lista de inmuebles después de eliminar el inmueble
+            return redirect('lista_inmuebles')
+        elif 'cancelar' in request.POST:
+            return redirect('home')  
+
+    return render(request, 'borrar_inmueble.html', {'inmueble': inmueble})
+
+def lista_inmuebles(request):
+    inmuebles = Inmueble.objects.all()
+    return render(request, 'lista_inmuebles.html', {'inmuebles': inmuebles})

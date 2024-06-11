@@ -1,0 +1,29 @@
+{% extends 'static_base.html' %}
+{% load static %}
+{% block css_pages %}
+    <link rel="stylesheet" href="{% static 'css/register.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="form-body">
+  <div class="row">
+    <div class="form-holder">
+      <div class="form-content">
+        <div class="form-items">
+          <h3>Confirmar Eliminación de Inmueble</h3>
+          <form method="post">
+            {% csrf_token %}
+            <p>¿Estás seguro de que quieres eliminar este inmueble?</p>
+            <!-- Agregar campo oculto para confirmar -->
+            <input type="hidden" name="confirmar" value="true">
+            <div class="form-button mt-3">
+              <button id="submit" type="submit" class="btn btn-danger">Eliminar Inmueble</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+

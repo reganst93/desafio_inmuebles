@@ -10,80 +10,112 @@
     <div class="form-holder">
       <div class="form-content">
         <div class="form-items">
-          <h3>REGISTRATE HOY</h3>
-          <p>Registrate para ofrecer arriendos o arrendar propiedades</p>
+          <h3>REGÍSTRATE HOY</h3>
+          <p>Regístrate para ofrecer arriendos o arrendar propiedades</p>
           <form method="post" class="requires-validation" novalidate>
             {% csrf_token %}
             
             <div class="col-md-12">
               <label for="id_nombre">Nombre</label>
               {{ form.nombre }}
+              {% if form.nombre.errors %}
+              <div class="invalid-feedback">{{ form.nombre.errors }}</div>
+              {% else %}
               <div class="valid-feedback">Nombre válido!</div>
-              <div class="invalid-feedback">Este campo no puede estar en blanco!</div>
+              {% endif %}
             </div>
 
             <div class="col-md-12">
               <label for="id_apellido">Apellido</label>
               {{ form.apellido }}
+              {% if form.apellido.errors %}
+              <div class="invalid-feedback">{{ form.apellido.errors }}</div>
+              {% else %}
               <div class="valid-feedback">Apellido válido!</div>
-              <div class="invalid-feedback">Este campo no puede estar en blanco!</div>
+              {% endif %}
             </div>
 
             <div class="col-md-12">
-              <label for="id_rut">RUT</label>{{ form.rut }}
+              <label for="id_rut">RUT</label>
+              {{ form.rut }}
+              {% if form.rut.errors %}
+              <div class="invalid-feedback">{{ form.rut.errors }}</div>
+              {% else %}
               <div class="valid-feedback">RUT válido!</div>
-              <div class="invalid-feedback">Este campo no puede estar en blanco!</div>
+              {% endif %}
             </div>
 
             <div class="col-md-12">
               <label for="id_direccion">Dirección</label>
               {{ form.direccion }}
+              {% if form.direccion.errors %}
+              <div class="invalid-feedback">{{ form.direccion.errors }}</div>
+              {% else %}
               <div class="valid-feedback">Dirección válida!</div>
-              <div class="invalid-feedback">Este campo no puede estar en blanco!</div>
+              {% endif %}
             </div>
 
             <div class="col-md-12">
               <label for="id_telefono">Teléfono</label>
               {{ form.telefono }}
+              {% if form.telefono.errors %}
+              <div class="invalid-feedback">{{ form.telefono.errors }}</div>
+              {% else %}
               <div class="valid-feedback">Teléfono válido!</div>
-              <div class="invalid-feedback">Este campo no puede estar en blanco!</div>
+              {% endif %}
             </div>
 
             <div class="col-md-12">
               <label for="id_correo">Correo</label>
               {{ form.correo }}
+              {% if form.correo.errors %}
+              <div class="invalid-feedback">{{ form.correo.errors }}</div>
+              {% else %}
               <div class="valid-feedback">Correo válido!</div>
-              <div class="invalid-feedback">Este campo no puede estar en blanco!</div>
+              {% endif %}
             </div>
 
             <div class="col-md-12">
               <label for="id_tipo_usuario">Tipo de Usuario</label>
               {{ form.tipo_usuario }}
+              {% if form.tipo_usuario.errors %}
+              <div class="invalid-feedback">{{ form.tipo_usuario.errors }}</div>
+              {% else %}
               <div class="valid-feedback">Tipo de Usuario válido!</div>
-              <div class="invalid-feedback">Este campo no puede estar en blanco!</div>
+              {% endif %}
             </div>
 
             <div class="col-md-12">
               <label for="id_password1">Contraseña</label>
               {{ form.password1 }}
+              {% if form.password1.errors %}
+              <div class="invalid-feedback">{{ form.password1.errors }}</div>
+              {% else %}
               <div class="valid-feedback">Contraseña válida!</div>
-              <div class="invalid-feedback">Este campo no puede estar en blanco!</div>
+              {% endif %}
             </div>
 
             <div class="col-md-12">
               <label for="id_password2">Confirmar Contraseña</label>
               {{ form.password2 }}
+              {% if form.password2.errors %}
+              <div class="invalid-feedback">{{ form.password2.errors }}</div>
+              {% else %}
               <div class="valid-feedback">Contraseña válida!</div>
-              <div class="invalid-feedback">Este campo no puede estar en blanco!</div>
+              {% endif %}
             </div>
 
             <div class="form-button mt-3">
               <button id="submit" type="submit" class="btn btn-primary">Registrar</button>
             </div>
           </form>
+          {% if form.non_field_errors %}
+          <div class="invalid-feedback">{{ form.non_field_errors }}</div>
+          {% endif %}
         </div>
       </div>
     </div>
   </div>
 </div>
 {% endblock %}
+

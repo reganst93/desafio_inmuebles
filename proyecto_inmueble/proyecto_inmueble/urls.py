@@ -25,4 +25,8 @@ urlpatterns = [
     path('register/', views.register, name='register'),
     path('profile/', views.profile, name='profile'),
     path('logout/', views.logout_view, name='logout'),
+    path('agregar_inmueble/', views.agregar_inmueble, name='agregar_inmueble'),
+    path('editar_inmueble/<int:inmueble_id>/', views.editar_inmueble, name='editar_inmueble'),
+    path('borrar_inmueble/<int:inmueble_id>/', views.borrar_inmueble, name='borrar_inmueble'),
+    path('lista_inmuebles/', views.lista_inmuebles, name='lista_inmuebles'),
 ]

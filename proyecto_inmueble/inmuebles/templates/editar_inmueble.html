@@ -1,0 +1,62 @@
+{% extends 'static_base.html' %}
+{% load static %}
+{% block css_pages %}
+    <link rel="stylesheet" href="{% static 'css/register.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="form-body">
+  <div class="row">
+    <div class="form-holder">
+      <div class="form-content">
+        <div class="form-items">
+          <h3>Editar Inmueble</h3>
+          <form method="post" class="requires-validation" novalidate>
+            {% csrf_token %}
+            
+            <div class="col-md-12">
+              <label for="id_m2_construidos">Metros Cuadrados Construidos</label>
+              {{ form.m2_construidos }}
+              {% if form.m2_construidos.errors %}
+              <div class="invalid-feedback">{{ form.m2_construidos.errors }}</div>
+              {% endif %}
+            </div>
+
+            <div class="col-md-12">
+              <label for="id_cantidad_estacionamentos">Cantidad de Estacionamientos</label>
+              {{ form.cantidad_estacionamentos }}
+              {% if form.cantidad_estacionamientos.errors %}
+              <div class="invalid-feedback">{{ form.cantidad_estacionamientos.errors }}</div>
+              {% endif %}
+            </div>
+
+            <div class="col-md-12">
+                <label for="id_cantidad_banos">Cantidad de Baños</label>
+                {{ form.cantidad_banos }}
+                {% if form.cantidad_banos.errors %}
+                <div class="invalid-feedback">{{ form.cantidad_banos.errors }}</div>
+                {% endif %}
+            </div>
+
+            <div class="col-md-12">
+                <label for="id_precio_arriendo_mensual">Precios de arriendo</label>
+                {{ form.precio_arriendo_mensual }}
+                {% if form.precio_arriendo_mensual.errors %}
+                <div class="invalid-feedback">{{ form.precio_arriendo_mensual.errors }}</div>
+                {% endif %}
+            </div>
+
+            
+            <div class="form-button mt-3">
+              <button id="submit" type="submit" class="btn btn-primary">Guardar Cambios</button>
+            </div>
+          </form>
+          {% if form.non_field_errors %}
+          <div class="invalid-feedback">{{ form.non_field_errors }}</div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

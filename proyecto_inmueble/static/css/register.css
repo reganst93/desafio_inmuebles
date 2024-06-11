@@ -1,38 +1,36 @@
-/* CSS para el formulario */
 .form-content {
-    background-color: #ffffff; /* Color de fondo para el área del formulario */
-    padding: 30px; /* Ajusta el relleno según sea necesario */
-    border-radius: 10px; /* Agrega bordes redondeados para una apariencia más suave */
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Agrega una sombra suave para resaltar el formulario */
+    background-color: #ffffff; 
+    padding: 30px;
+    border-radius: 10px; 
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
 }
 
-/* Estilos para los elementos del formulario */
+
 .form-items label {
-    color: #333333; /* Color de texto para las etiquetas del formulario */
-    font-weight: bold; /* Texto en negrita para las etiquetas del formulario */
+    color: #333333; 
+    font-weight: bold; 
 }
 
 .form-items input,
 .form-items select,
 .form-items textarea {
-    width: 100%; /* Ajusta el ancho de los campos del formulario */
-    padding: 10px; /* Ajusta el relleno según sea necesario */
-    margin-bottom: 15px; /* Espaciado entre los campos del formulario */
-    border: 1px solid #cccccc; /* Borde del campo del formulario */
-    border-radius: 5px; /* Bordes redondeados para los campos del formulario */
+    width: 100%; 
+    padding: 10px; 
+    margin-bottom: 15px; 
+    border: 1px solid #cccccc; 
+    border-radius: 5px; 
 }
 
-/* Estilos para los botones del formulario */
 .form-button button {
-    width: 100%; /* Ajusta el ancho del botón */
-    padding: 10px; /* Ajusta el relleno según sea necesario */
-    border: none; /* Elimina el borde del botón */
-    border-radius: 5px; /* Bordes redondeados para el botón */
-    background-color: #007bff; /* Color de fondo para el botón */
-    color: #ffffff; /* Color de texto para el botón */
-    cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+    width: 100%; 
+    padding: 10px; 
+    border: none; 
+    border-radius: 5px;
+    background-color: #007bff; 
+    color: #ffffff; 
+    cursor: pointer; 
 }
 
 .form-button button:hover {
-    background-color: #0056b3; /* Color de fondo para el botón al pasar el mouse */
+    background-color: #0056b3;
 }

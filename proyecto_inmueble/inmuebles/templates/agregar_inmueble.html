@@ -1,0 +1,140 @@
+{% extends 'static_base.html' %}
+{% load static %}
+{% block css_pages %}
+    <link rel="stylesheet" href="{% static 'css/register.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="form-body">
+  <div class="row">
+    <div class="form-holder">
+      <div class="form-content">
+        <div class="form-items">
+          <h3>Agregar Nuevo Inmueble</h3>
+          <p>Por favor, complete la información del nuevo inmueble.</p>
+          <form method="post" class="requires-validation" novalidate>
+            {% csrf_token %}
+            
+            <div class="col-md-12">
+              <label for="id_nombre">Titulo para propiedad</label>
+              {{ form.nombre }}
+              {% if form.nombre.errors %}
+              <div class="invalid-feedback">{{ form.nombre.errors }}</div>
+              {% else %}
+              <div class="valid-feedback">Nombre válido!</div>
+              {% endif %}
+            </div>
+
+            <div class="col-md-12">
+              <label for="id_descripcion">Descripción</label>
+              {{ form.descripcion }}
+              {% if form.descripcion.errors %}
+              <div class="invalid-feedback">{{ form.descripcion.errors }}</div>
+              {% else %}
+              <div class="valid-feedback">Descripción válida!</div>
+              {% endif %}
+            </div>
+
+            <div class="col-md-12">
+              <label for="id_m2_construidos">Metros Cuadrados Construidos</label>
+              {{ form.m2_construidos }}
+              {% if form.m2_construidos.errors %}
+              <div class="invalid-feedback">{{ form.m2_construidos.errors }}</div>
+              {% else %}
+              <div class="valid-feedback">Metros Cuadrados Construidos válidos!</div>
+              {% endif %}
+            </div>
+
+            <div class="col-md-12">
+              <label for="id_m2_totales">Metros Cuadrados Totales</label>
+              {{ form.m2_totales }}
+              {% if form.m2_totales.errors %}
+              <div class="invalid-feedback">{{ form.m2_totales.errors }}</div>
+              {% else %}
+              <div class="valid-feedback">Metros Cuadrados Totales válidos!</div>
+              {% endif %}
+            </div>
+
+            <div class="col-md-12">
+              <label for="id_cantidad_estacionamentos">Cantidad de Estacionamientos</label>
+              {{ form.cantidad_estacionamentos }}
+              {% if form.cantidad_estacionamentos.errors %}
+              <div class="invalid-feedback">{{ form.cantidad_estacionamentos.errors }}</div>
+              {% else %}
+              <div class="valid-feedback">Cantidad de Estacionamientos válida!</div>
+              {% endif %}
+            </div>
+
+            <div class="col-md-12">
+              <label for="id_cantidad_habitaciones">Cantidad de Habitaciones</label>
+              {{ form.cantidad_habitaciones }}
+              {% if form.cantidad_habitaciones.errors %}
+              <div class="invalid-feedback">{{ form.cantidad_habitaciones.errors }}</div>
+              {% else %}
+              <div class="valid-feedback">Cantidad de Habitaciones válida!</div>
+              {% endif %}
+            </div>
+
+            <div class="col-md-12">
+              <label for="id_cantidad_banos">Cantidad de Baños</label>
+              {{ form.cantidad_banos }}
+              {% if form.cantidad_banos.errors %}
+              <div class="invalid-feedback">{{ form.cantidad_banos.errors }}</div>
+              {% else %}
+              <div class="valid-feedback">Cantidad de Baños válida!</div>
+              {% endif %}
+            </div>
+
+            <div class="col-md-12">
+              <label for="id_direccion">Dirección</label>
+              {{ form.direccion }}
+              {% if form.direccion.errors %}
+              <div class="invalid-feedback">{{ form.direccion.errors }}</div>
+              {% else %}
+              <div class="valid-feedback">Dirección válida!</div>
+              {% endif %}
+            </div>
+
+            <div class="col-md-12">
+              <label for="id_comuna">Comuna</label>
+              {{ form.comuna }}
+              {% if form.comuna.errors %}
+              <div class="invalid-feedback">{{ form.comuna.errors }}</div>
+              {% else %}
+              <div class="valid-feedback">Comuna válida!</div>
+              {% endif %}
+            </div>
+
+            <div class="col-md-12">
+              <label for="id_tipo_inmueble">Tipo de Inmueble</label>
+              {{ form.tipo_inmueble }}
+              {% if form.tipo_inmueble.errors %}
+              <div class="invalid-feedback">{{ form.tipo_inmueble.errors }}</div>
+              {% else %}
+              <div class="valid-feedback">Tipo de Inmueble válido!</div>
+              {% endif %}
+            </div>
+
+            <div class="col-md-12">
+              <label for="id_precio_arriendo_mensual">Precio de Arriendo Mensual</label>
+              {{ form.precio_arriendo_mensual }}
+              {% if form.precio_arriendo_mensual.errors %}
+              <div class="invalid-feedback">{{ form.precio_arriendo_mensual.errors }}</div>
+              {% else %}
+              <div class="valid-feedback">Precio de Arriendo Mensual válido!</div>
+              {% endif %}
+            </div>
+
+            <div class="form-button mt-3">
+              <button id="submit" type="submit" class="btn btn-primary">Guardar</button>
+            </div>
+          </form>
+          {% if form.non_field_errors %}
+          <div class="invalid-feedback">{{ form.non_field_errors }}</div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
